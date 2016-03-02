@@ -3,7 +3,7 @@
     Created by: Joseph Matthew R. Marcos
     CMSC 128 Homework 2
     Class: AB-5L
-    We use ES6 because we are cool
+    I use ES6 because I lavet
 */
 
 /*
@@ -91,7 +91,7 @@ const getSkew = (string, n) => {
     let cCount = 0,
         gCount = 0;
 
-    if(typeof string != 'string' && typeof number != 'number') {
+    if(typeof string != 'string' && typeof n != 'number') {
         return new Error('Error! A parameter is not a string');
     }
 
@@ -123,4 +123,36 @@ const getSkew = (string, n) => {
 */
 const getMaxSkewN = (string, n) {
 
+    let myStack = [],
+        cCount = 0,
+        gCount = 0,
+        max = 0;
+
+    if(typeof string != 'string' && typeof n != 'number') {
+        return new Error('Error! A parameter is of wrong type!');
+    }
+
+    if(n <= 0) {
+        return new Error('Cannot have ' + n + ' length!');
+    }
+
+    for(let j = 0 ; j < n ; j++) {
+        for (let i = 0 ; i < j ; i++) {
+
+            // Iterate through entire string until n
+            if(string[i].toLowerCase() === 'c') {
+                cCount++;
+            }
+            else if(string[i].toLowerCase() === 'g') {
+                gCount++;
+            }
+        }
+        myStack.push(gCount - cCount);
+    }
+
+    for(let i = 0 ; i < myStack.length ; i++) {
+        if(myStack[i] > max) {
+            max = myStack[i];
+        }
+    }
 };
