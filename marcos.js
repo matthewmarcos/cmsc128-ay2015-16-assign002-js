@@ -3,9 +3,9 @@
     Created by: Joseph Matthew R. Marcos
     CMSC 128 Homework 2
     Class: AB-5L
+    We use ES6 because we are cool
 */
 
-// We use ES6 because we are cool
 /*
     function getHammingDistance(string, string):
     Given two strings string1 and string2 of same length (length must never be 0 or
@@ -55,10 +55,12 @@ const countSubstrPattern = (original, pattern) => {
     let substrCount = 0;
 
     if(typeof original != 'string' && typeof pattern != 'string') {
+        // Check if both parameters are string
         return new Error('Error! A parameter is not a string');
     }
 
     if(original.length === 0) {
+        // Check if length of original string is 0
         return new Error('Error! Empty string as first parameter!');
     }
 
@@ -68,11 +70,57 @@ const countSubstrPattern = (original, pattern) => {
 
     for(let i = 0 ; i <= original.length - pattern.length ; i++) {
 
-        // console.log("Substr: " + original.substring(i, i + pattern.length));
         if(original.substring(i, i + pattern.length) === pattern) {
             substrCount++;
         }
     }
 
     return Number(substrCount);
+};
+
+
+/*
+    function getSkew(string, int):
+    Given a genome str of some length q (where q>0), it returns the number of
+    Gs minus the number of Cs in the first n nucleotides (q>=n). The value can be zero,
+    negative or positive. The first position is one (1) not zero(0) as we typically associate with
+    string implementations.
+*/
+const getSkew = (string, n) => {
+
+    let cCount = 0,
+        gCount = 0;
+
+    if(typeof string != 'string' && typeof number != 'number') {
+        return new Error('Error! A parameter is not a string');
+    }
+
+    if(n <= 0) {
+        return new Error('Cannot have ' + n + ' length!');
+    }
+
+    for (let i = 0 ; i < n ; i++) {
+
+        // Iterate through entire string until n
+        if(string[i].toLowerCase() === 'c') {
+            cCount++;
+        }
+        else if(string[i].toLowerCase() === 'g') {
+            gCount++;
+        }
+    }
+
+    return Number(gCount - cCount);
+};
+
+
+/*
+    function getMaxSkewN(string, int):
+    Given a genome str of some length q (where q>0), it returns the maximum
+    value of the number of Gs minus the number of Cs in the first n nucleotides (q>=n). The
+    value can be zero, negative or positive. The first position is one (1) not zero(0) as we
+    typically associate with string implementations.
+*/
+const getMaxSkewN = (string, n) {
+
 };
