@@ -121,7 +121,7 @@ const getSkew = (string, n) => {
     value can be zero, negative or positive. The first position is one (1) not zero(0) as we
     typically associate with string implementations.
 */
-const getMaxSkewN = (string, n) {
+const getMaxSkewN = (string, n) => {
 
     let myStack = [],
         cCount = 0,
@@ -132,14 +132,21 @@ const getMaxSkewN = (string, n) {
         return new Error('Error! A parameter is of wrong type!');
     }
 
-    if(n <= 0) {
-        return new Error('Cannot have ' + n + ' length!');
+    if(n <== 0) {
+        return new Error('Error! Cannot have ' + n + ' length!');
     }
 
-    for(let j = 0 ; j < n ; j++) {
+    if(string.length === 0) {
+        return new Error('Error: Cannot have empty string!');
+    }
+
+    n = n + 1;
+
+    // Get all skews of strings between 0 to n
+    for(let j = 1 ; j < n ; j++) {
         for (let i = 0 ; i < j ; i++) {
 
-            // Iterate through entire string until n
+            // Iterate through entire string until j
             if(string[i].toLowerCase() === 'c') {
                 cCount++;
             }
@@ -150,9 +157,12 @@ const getMaxSkewN = (string, n) {
         myStack.push(gCount - cCount);
     }
 
+    // Get the max skew.
     for(let i = 0 ; i < myStack.length ; i++) {
         if(myStack[i] > max) {
             max = myStack[i];
         }
     }
+
+    return Number(max);
 };
