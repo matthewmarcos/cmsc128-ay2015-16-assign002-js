@@ -178,7 +178,9 @@ const isValidString = (string, alphabet) => {
 
     /*
         function isPartOf:
-        Determines if unit is a member of set/string
+        Determines if unit is a member of set/string.
+        No error checking but it is faster. For safety purposes, it is applied
+        only as a local function within this function.
     */
     const isPartOf = (unit, set) => {
         for(let i = 0 ; i < set.length ; i++) {
@@ -206,6 +208,7 @@ const isValidString = (string, alphabet) => {
     }
 
     for(let i = 0 ; i < string.length ; i++) {
+        // Check if each character in the string is part of the alphabet
         if(!isPartOf(string[i], alphabet)) {
             return false;
         }
