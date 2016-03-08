@@ -167,3 +167,42 @@ const getMaxSkewN = (string, n) => {
 
     return Number(max);
 };
+
+
+/*
+    function isValidString(string, string):
+    Given an alphabet string where all letters are assumed to be unique, this
+    function returns true if the string str is a valid string based on the letters of alphabet.
+*/
+const isValidString = (string, alphabet) => {
+
+    /*
+        function isPartOf:
+        Determines if unit is a member of set/string
+    */
+    const isPartOf = (unit, set) => {
+        for(let i = 0 ; i < set.length ; i++) {
+            if(unit === set[i]) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    if(typeof string !== 'string' || typeof alphabet != 'string') {
+        // Check if both parameters are strings
+        return new Error('Error: Both parameters must be strings');
+    }
+
+    if(alphabet.length === 0) {
+        // Check if alphabet has 0 length
+        return new Error('Error: Second parameter must have contents');
+    }
+
+    if(string.length === 0) {
+        // Check if string has 0 length
+        return new Error('Error: First parameter must have contents');
+    }
+
+};
