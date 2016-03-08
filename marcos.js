@@ -205,4 +205,11 @@ const isValidString = (string, alphabet) => {
         return new Error('Error: First parameter must have contents');
     }
 
+    for(let i = 0 ; i < string.length ; i++) {
+        if(!isPartOf(string[i], alphabet)) {
+            return false;
+        }
+    }
+
+    return true;
 };
