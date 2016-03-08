@@ -132,7 +132,7 @@ const getMaxSkewN = (string, n) => {
         return new Error('Error! A parameter is of wrong type!');
     }
 
-    if(n <== 0) {
+    if(n <= 0) {
         return new Error('Error! Cannot have ' + n + ' length!');
     }
 
@@ -145,7 +145,6 @@ const getMaxSkewN = (string, n) => {
     // Get all skews of strings between 0 to n
     for(let j = 1 ; j < n ; j++) {
         for (let i = 0 ; i < j ; i++) {
-
             // Iterate through entire string until j
             if(string[i].toLowerCase() === 'c') {
                 cCount++;
@@ -155,6 +154,8 @@ const getMaxSkewN = (string, n) => {
             }
         }
         myStack.push(gCount - cCount);
+        console.log(myStack);
+        gCount = cCount = 0;
     }
 
     // Get the max skew.
