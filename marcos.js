@@ -124,8 +124,6 @@ const getSkew = (string, n) => {
 const getMaxSkewN = (string, n) => {
 
     let myStack = [],
-        cCount = 0,
-        gCount = 0,
         max = 0;
 
     if(typeof string != 'string' && typeof n != 'number') {
@@ -144,28 +142,11 @@ const getMaxSkewN = (string, n) => {
 
     // Get all skews of strings between 0 to n
     for(let j = 1 ; j < n ; j++) {
-        for (let i = 0 ; i < j ; i++) {
-            // Iterate through entire string until j
-            if(string[i].toLowerCase() === 'c') {
-                cCount++;
-            }
-            else if(string[i].toLowerCase() === 'g') {
-                gCount++;
-            }
-        }
-        myStack.push(gCount - cCount);
-        console.log(myStack);
-        gCount = cCount = 0;
+        myStack.push(getSkew(string, j));
     }
 
-    // Get the max skew.
-    for(let i = 0 ; i < myStack.length ; i++) {
-        if(myStack[i] > max) {
-            max = myStack[i];
-        }
-    }
-
-    return Number(max);
+    // Return the max skew
+    return Number(myStack.sort()[myStack.length - 1]);
 };
 
 
