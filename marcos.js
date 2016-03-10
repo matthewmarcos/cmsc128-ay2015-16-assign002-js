@@ -6,6 +6,7 @@
     I use ES6 because I lavet
 */
 
+
 /*
     function getHammingDistance(string, string):
     Given two strings string1 and string2 of same length (length must never be 0 or
@@ -41,7 +42,6 @@ const getHammingDistance = (string1, string2) => {
     }
 
     return Number(hammingDistance);
-
 };
 
 
@@ -198,6 +198,8 @@ const isValidString = (string, alphabet) => {
         Determines if unit is a member of set/string.
         No error checking but it is faster. For safety purposes, it is applied
         only as a local function within this function.
+
+        We usually have _.some for these kinds of situations
     */
     const isPartOf = (unit, set) => {
         for(let i = 0 ; i < set.length ; i++) {
