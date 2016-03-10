@@ -115,6 +115,42 @@ const getSkew = (string, n) => {
 
 
 /*
+    function getMinSkewN(string, int):
+    Given a genome str of some length q (where q>0), it returns the minimum
+    value of the number of Gs minus the number of Cs in the first n nucleotides (q>=n). The
+    value can be zero, negative or positive. The first position is one (1) not zero(0) as we
+    typically associate with string implementations.
+*/
+const getMinSkewN = (string, n) => {
+
+    let myStack = [],
+        max = 0;
+
+    if(typeof string != 'string' && typeof n != 'number') {
+        return new Error('Error! A parameter is of wrong type!');
+    }
+
+    if(n <= 0) {
+        return new Error('Error! Cannot have ' + n + ' length!');
+    }
+
+    if(string.length === 0) {
+        return new Error('Error: Cannot have empty string!');
+    }
+
+    n = n + 1;
+
+    // Get all skews of strings between 0 to n
+    for(let j = 1 ; j < n ; j++) {
+        myStack.push(getSkew(string, j));
+    }
+
+    // Return the min skew
+    return Number(myStack.sort()[0]);
+};
+
+
+/*
     function getMaxSkewN(string, int):
     Given a genome str of some length q (where q>0), it returns the maximum
     value of the number of Gs minus the number of Cs in the first n nucleotides (q>=n). The
